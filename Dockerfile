@@ -56,6 +56,28 @@ VOLUME ${ZEPPELIN_NOTEBOOK_DIR}
 VOLUME ${ZEPPELIN_DATA}
 
 ##########################################
+### CONFIGURATIONS
+##########################################
+ENV ZEPPELIN_MEM="-Xmx3096m"
+ENV ZEPPELIN_INTERPRETER_GROUP_ORDER="spark,md,sh,file,python,jdbc"
+ENV ZEPPELIN_INTERPRETERS="org.apache.zeppelin.spark.SparkInterpreter, \
+    org.apache.zeppelin.spark.PySparkInterpreter, \
+    org.apache.zeppelin.spark.SparkSqlInterpreter, \
+    org.apache.zeppelin.markdown.Markdown, \
+    org.apache.zeppelin.angular.AngularInterpreter, \
+    org.apache.zeppelin.shell.ShellInterpreter, \
+    org.apache.zeppelin.file.HDFSFileInterpreter, \
+    org.apache.zeppelin.python.PythonInterpreter, \
+    org.apache.zeppelin.python.PythonInterpreterPandasSql, \
+    org.apache.zeppelin.python.PythonCondaInterpreter, \
+    org.apache.zeppelin.python.PythonDockerInterpreter, \
+    org.apache.zeppelin.cassandra.CassandraInterpreter, \
+    org.apache.zeppelin.postgresql.PostgreSqlInterpreter, \
+    org.apache.zeppelin.jdbc.JDBCInterpreter, \
+    org.apache.zeppelin.elasticsearch.ElasticsearchInterpreter, \
+    org.apache.zeppelin.hbase.HbaseInterpreter"
+
+##########################################
 ### PORTS
 ##########################################
 EXPOSE ${ZEPPELIN_PORT}
